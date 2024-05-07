@@ -104,8 +104,10 @@ class NotionHelper:
 
     def search_database(self, block_id):
         children = self.client.blocks.children.list(block_id=block_id)["results"]
+        
         # 遍历子块
         for child in children:
+            print(child)
             # 检查子块的类型
             if child["type"] == "child_database":
                 self.database_id_dict[child.get("child_database").get("title")] = (
